@@ -6,7 +6,6 @@ load_dotenv()
 
 app = FastAPI()
 
-
 @app.get('/')
 def main():
     print('Hello world')
@@ -16,7 +15,9 @@ def main():
 def get_context(query : str):
     try:
         retriever = build_retriever()
+        print('retrieved succesfully')
         docs = retriever.invoke(query)
+        print(docs)
         context = "\n\n".join([doc.page_content for doc in docs])
         return context
     except Exception as e:

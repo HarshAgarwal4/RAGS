@@ -6,7 +6,6 @@ load_dotenv()
 
 app = FastAPI()
 
-retriever = build_retriever()
 
 @app.get('/')
 def main():
@@ -16,6 +15,7 @@ def main():
 @app.get('/chunks')
 def get_context(query : str):
     try:
+        retriever = build_retriever()
         docs = retriever.invoke(query)
         context = "\n\n".join([doc.page_content for doc in docs])
         return context

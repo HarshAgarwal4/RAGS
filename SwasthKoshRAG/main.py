@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from RAG.Retriver import build_retriever
+from RAG.Retriver import build_retriever , retreiver
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -14,7 +14,6 @@ def main():
 @app.get('/chunks')
 def get_context(query : str):
     try:
-        retriever = build_retriever()
         print('retrieved succesfully')
         docs = retriever.invoke(query)
         print(docs)

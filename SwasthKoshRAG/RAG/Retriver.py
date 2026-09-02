@@ -17,3 +17,5 @@ def build_retriever():
             'lambda_mult': 0.5
         }
     )
+
+retreiver = build_retriever()
